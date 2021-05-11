@@ -1,0 +1,13 @@
+<!-- liste de tous les metier en pagination-->
+
+<h1>Annonces à la Une :</h1>
+    <div *ngFor="let user of utilisateurs._embedded.utilisateurs">
+      <div class="row">
+        <div class="col-md-4">
+      <app-carte [user]="user"></app-carte>
+        </div>
+      </div>
+  </div>
+
+
+

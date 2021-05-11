@@ -1,0 +1,7 @@
+.jumbotron {
+  background-image:
+    url("/assets/image/artisan.jpg");
+  background-size: cover;
+  min-height: 180px;
+  height: 150%;
+}

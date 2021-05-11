@@ -1,0 +1,316 @@
+<div class="container">
+<app-navbarr></app-navbarr>
+  <h5>Créez votre compte professionnel pour y accéder.</h5>
+
+  <form #loginForm="ngForm">
+    <!-- champs nom -->
+    <div class="form-group">
+      <label for="exampleInputNom">Nom: </label>
+      <input
+        [(ngModel)]="nom"
+        type="text"
+        #nomInput="ngModel"
+        required
+        ngModel
+        name="nom"
+        minlength="3"
+        class="form-control"
+        id="exampleInputNom"
+        placeholder="Enter votre nom"
+      />
+      <div
+        *ngIf="nomInput.invalid && nomInput.dirty"
+        class="alert alert-danger"
+      >
+       champs obligatoire et au moins 3 caractéres
+      </div>
+    </div>
+    <!-- champs prenom -->
+    <div class="form-group">
+      <label for="exampleInputPrenom">Prenom: </label>
+      <input
+        [(ngModel)]="prenom"
+        type="text"
+        #prenomInput="ngModel"
+        required
+        ngModel
+        name="prenom"
+        class="form-control"
+        id="exampleInputPrenom"
+        placeholder="Enter votre prenom"
+      />
+      <div
+        *ngIf="prenomInput.invalid && prenomInput.dirty"
+        class="alert alert-danger"
+      >
+        champs obligatoire
+      </div>
+    </div>
+    <!-- champs date de naissance -->
+    <div class="form-group">
+    <label for="exampleInputDate">Date de naissance: </label>
+    <input class="form-control"
+           type="date"
+           [(ngModel)]="date"
+           required
+           name="datedenaissance"
+           class="form-control"
+           id="exampleInputDate"
+           #dateInput
+           ngModel
+    >
+    </div>
+    <div
+      *ngIf="dateInput.invalid && dateInput.dirty"
+      class="alert alert-danger"
+    >
+     saisie une date
+    </div>
+
+    <!-- champs Email -->
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email: </label>
+      <input
+        [(ngModel)]="email"
+        type="email"
+        #emailInput="ngModel"
+        required
+        email
+        ngModel
+        name="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+        (change)="verifierEmail(emailInput.value)"
+      />
+      <span  *ngFor="let E of listEmail._embedded.utilisateurs">
+      <div
+        *ngIf="E.email== email && emailInput.dirty"
+        class="alert alert-danger"
+      >
+        L'email existe déjà
+      </div>
+      </span>
+
+      <div
+
+        *ngIf="emailInput.invalid && emailInput.dirty"
+        class="alert alert-danger"
+      >
+        L'email est obliogatoire et doit être correct
+      </div>
+    </div>
+    <!-- ville -->
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Selectionner ville</label>
+      <select
+        [(ngModel)]="ville"
+        class="form-control"
+        id="exampleFormControlSelect1"
+        #villeInput
+        name="ville"
+        placeholder="Toute la Tunisie"
+        required
+        ngModel>
+        <option value="Ariana">Ariana</option>
+        <option>Ben arous</option>
+        <option>Bizerte</option>
+        <option>Béja</option>
+        <option>Gabès</option>
+        <option>Gafsa</option>
+        <option>Jendouba</option>
+        <option>Kairouan</option>
+        <option>Kasserine</option>
+        <option>Kébili</option>
+        <option>La manouba</option>
+        <option>Le kef</option>
+        <option>Mahdia</option>
+        <option>Monastir</option>
+        <option>Médenine</option>
+        <option>Nabeul</option>
+        <option>Sfax</option>
+        <option>Sidi bouzid</option>
+        <option>Siliana</option>
+        <option>Sousse</option>
+        <option>Tataouine</option>
+        <option>Tozeur</option>
+        <option>Tunis</option>
+        <option>Zaghouan</option>
+      </select>
+      <div
+        *ngIf="villeInput.invalid && villeInput.dirty"
+        class="alert alert-danger"
+      >
+        Ville obligatoire
+      </div>
+    </div>
+
+
+    <!-- adresse -->
+    <div class="form-group">
+      <label for="exampleInputAdresse">Adresse: </label>
+      <input
+        [(ngModel)]="adresse"
+        type="text"
+        #adersseInput="ngModel"
+        required
+        ngModel
+        name="adresse"
+        class="form-control"
+        id="exampleInputAdresse"
+        placeholder="Enter votre adressse"
+      />
+      <div
+        *ngIf="adersseInput.invalid && adersseInput.dirty"
+        class="alert alert-danger"
+      >
+        saisie votre Adresse
+      </div>
+    </div>
+
+
+    <!-- numero telephone -->
+
+    <div class="form-group">
+      <label for="exampleInputNumero">Numéro Téléphone: </label>
+      <input
+        [(ngModel)]="telephone"
+        type="tel"
+        pattern="[0-9]{8}"
+        #numeroInput="ngModel"
+        required
+        ngModel
+        name="numerotelephone"
+        class="form-control"
+        id="exampleInputNumero"
+        placeholder="Enter numero téléphone"
+        length="8"
+      />
+      <div
+        *ngIf="numeroInput.invalid && numeroInput.dirty"
+        class="alert alert-danger"
+      >
+        Numero incorret
+      </div>
+    </div>
+    <!-- votre metier -->
+
+    <div class="form-group">
+      <label for="exampleFormControlmetier">Selectionner métier</label>
+      <select
+        [(ngModel)]="metier"
+        class="form-control"
+        id="exampleFormControlmetier"
+        #metierInput
+        name="metier"
+        placeholder="Tous les métiers"
+        required
+        ngModel>
+        <option value="" selected="selected">Votre métier principal</option>
+        <option value="Architecte (DPLG / DE)">Architecte (DPLG / DE)</option>
+        <option value="Architecte d'intérieur">Architecte d'intérieur</option>
+        <option value="Ascensoriste">Ascensoriste</option>
+        <option value="Bricoleur">Bricoleur</option>
+        <option value="Carreleur">Carreleur</option>
+        <option value="Chauffagiste">Chauffagiste</option>
+        <option value="Couvreur">Couvreur</option>
+        <option value="Charpentier">Charpentier</option>
+        <option value="Cuisiniste">Cuisiniste</option>
+        <option value="Décorateur">Décorateur</option>
+        <option value="Diagnostiqueur">Diagnostiqueur (immobilier, traitement, bureau d'études)</option>
+        <option value="Ebéniste">Ebéniste</option>
+        <option value="Electricien">Electricien</option>
+        <option value="Etancheur">Etancheur</option>
+        <option value="Entreprise d'isolation">Entreprise d'isolation</option>
+        <option value="Façadier">Façadier</option>
+        <option value="Ferronnier">Ferronnier</option>
+        <option value="Fumiste">Fumiste</option>
+        <option value="Frigoriste">Frigoriste</option>
+        <option value="Installateur de cheminée">Installateur de cheminée</option>
+        <option value="Jardinier">Jardinier</option>
+        <option value="Maçon">Maçon</option>
+        <option value="Marbrier">Marbrier</option>
+        <option value="Menuisier">Menuisier</option>
+        <option value="Métallier">Métallier </option>
+        <option value="Paysagiste">Paysagiste</option>
+        <option value="Peintre">Peintre</option>
+        <option value="Petits travaux">Petits travaux</option>
+        <option value="Pisciniste">Pisciniste</option>
+        <option value="Plaquiste">Plaquiste</option>
+        <option value="Plâtrier">Plâtrier</option>
+        <option value="Plombier">Plombier</option>
+        <option value="sécurité-Services">Professionnel de la sécurité - Services aux entreprises</option>
+        <option value="nettoyage du bâtiment">Professionnel du nettoyage du bâtiment</option>
+        <option value="traitement des nuisibles">Professionnel du traitement des nuisibles</option>
+        <option value="Second Œuvre">Professionnel Second Œuvre</option>
+        <option value="Constructeur">Professionnel Tout corps d'Etat - Constructeur</option>
+        <option value="Serrurier">Serrurier</option>
+        <option value="Solier">Solier - Moquettiste</option>
+        <option value="Tailleur de pierre">Tailleur de pierre</option>
+        <option value="Terrassier">Terrassier - Assainisseur</option>
+        <option value="Vitrier">Vitrier - Miroitier</option>
+      </select>
+      <div
+        *ngIf="villeInput.invalid && villeInput.dirty"
+        class="alert alert-danger"
+      >
+        Ville obligatoire
+      </div>
+    </div>
+
+
+    <!-- description -->
+    <div class="form-group">
+      <label for="exampleInputdescription">Description: </label>
+      <textarea
+        [(ngModel)]="description"
+        rows="3"
+        type="textarea"
+        #descriptionInput="ngModel"
+        required
+        ngModel
+        name="message"
+        class="form-control"
+        id="exampleInputdescription"
+        placeholder="Décrire votre métier"
+      ></textarea>
+      <div
+        *ngIf="descriptionInput.invalid && descriptionInput.dirty"
+        class="alert alert-danger"
+      >
+        champs obligatoire
+      </div>
+    </div>
+    <!-- mot de passe -->
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        required
+        minlength="4"
+        class="form-control"
+        ngModel
+        #pwdInput="ngModel"
+        name="motdepasse"
+        id="exampleInputPassword1"
+        placeholder="Password"
+      />
+      <div *ngIf="pwdInput.invalid && pwdInput.dirty" class="alert alert-danger">
+        Le password est obligatoire et doit impérativementa voir au moins 4
+        caractères
+      </div>
+    </div>
+    <button
+      (click)="verifierEmail(emailInput.value)"
+      (click)=" ajoutUser(loginForm.value)"
+      [disabled]="loginForm.invalid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
+
