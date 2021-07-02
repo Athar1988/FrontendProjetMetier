@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-sm">
 <app-navbarr></app-navbarr>
   <h5>Créez votre compte professionnel pour y accéder.</h5>
 
@@ -35,6 +35,7 @@
         required
         ngModel
         name="prenom"
+        minlength="3"
         class="form-control"
         id="exampleInputPrenom"
         placeholder="Enter votre prenom"
@@ -43,7 +44,7 @@
         *ngIf="prenomInput.invalid && prenomInput.dirty"
         class="alert alert-danger"
       >
-        champs obligatoire
+        champs obligatoire et au moins 3 caractéres
       </div>
     </div>
     <!-- champs date de naissance -->
@@ -84,18 +85,16 @@
         placeholder="Enter email"
         (change)="verifierEmail(emailInput.value)"
       />
-      <span  *ngFor="let E of listEmail._embedded.utilisateurs">
       <div
-        *ngIf="E.email== email && emailInput.dirty"
+        *ngIf=" emailInput.dirty &&  serviceUser.mailexiste==true "
         class="alert alert-danger"
       >
         L'email existe déjà
       </div>
-      </span>
 
       <div
 
-        *ngIf="emailInput.invalid && emailInput.dirty"
+        *ngIf="emailInput.invalid && emailInput.dirty &&  serviceUser.mailexiste==false"
         class="alert alert-danger"
       >
         L'email est obliogatoire et doit être correct
@@ -113,6 +112,7 @@
         placeholder="Toute la Tunisie"
         required
         ngModel>
+        <option value="" selected="selected">Votre ville</option>
         <option value="Ariana">Ariana</option>
         <option>Ben arous</option>
         <option>Bizerte</option>
@@ -196,6 +196,36 @@
     </div>
     <!-- votre metier -->
 
+    <select name="ctl00$ContentPlaceHolder1$ddlFieldN1" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$ddlFieldN1\',\'\')', 0)" id="ContentPlaceHolder1_ddlFieldN1" class="aspinput bglight">
+      <option value=""></option>
+      <option value="Arts création et design">Arts création et design</option>
+      <option value="Marketing, publicité et média digitale">Marketing, publicité et média digitale</option>
+      <option value="Journalisme et édition">Journalisme et édition</option>
+      <option value="Services d'architecture">Services d'architecture</option>
+      <option value="Travaux publiques et construction">Travaux publiques et construction</option>
+      <option value="Services publiques et administration">Services publiques et administration</option>
+      <option value="Finance et conseil">Finance et conseil</option>
+      <option value="Services sociaux et à domicile">Services sociaux et à domicile</option>
+      <option value="Formation et éducation">Formation et éducation</option>
+      <option value="Transport et Logistique">Transport et Logistique</option>
+      <option value="Hôtellerie, gestion d'événements et restauration">Hôtellerie, gestion d'événements et restauration</option>
+      <option value="Santé et protection sociale">Santé et protection sociale</option>
+      <option value="Environnement, agriculture et animal">Environnement, agriculture et animal</option>
+      <option value="Technologies et services de l'information">Technologies et services de l'information</option>
+      <option value="Ingénierie et fabrication">Ingénierie et fabrication</option>
+      <option value="Vente achat et marchandise">Vente achat et marchandise</option>
+      <option value="Droit et juridique">Droit et juridique</option>
+      <option selected="selected" value="Mode et beauté">Mode et beauté</option>
+      <option value="Loisirs sportifs et tourisme">Loisirs sportifs et tourisme</option>
+      <option value="Musique du spectacle et arts">Musique du spectacle et arts</option>
+      <option value="Organisation bénévole">Organisation bénévole</option>
+      <option value="Automobile">Automobile</option>
+      <option value="Autre">Autre</option>
+
+    </select>
+    /****************************************************************
+    ******************************************************/
+
     <div class="form-group">
       <label for="exampleFormControlmetier">Selectionner métier</label>
       <select
@@ -270,7 +300,7 @@
         #descriptionInput="ngModel"
         required
         ngModel
-        name="message"
+        name="description"
         class="form-control"
         id="exampleInputdescription"
         placeholder="Décrire votre métier"
@@ -284,7 +314,7 @@
     </div>
     <!-- mot de passe -->
     <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
+      <label for="exampleInputPassword1">Mot de passe</label>
       <input
         type="password"
         required
@@ -294,7 +324,7 @@
         #pwdInput="ngModel"
         name="motdepasse"
         id="exampleInputPassword1"
-        placeholder="Password"
+        placeholder="Mot de passe"
       />
       <div *ngIf="pwdInput.invalid && pwdInput.dirty" class="alert alert-danger">
         Le password est obligatoire et doit impérativementa voir au moins 4
@@ -302,15 +332,19 @@
       </div>
     </div>
     <button
-      (click)="verifierEmail(emailInput.value)"
       (click)=" ajoutUser(loginForm.value)"
       [disabled]="loginForm.invalid"
       type="submit"
-      class="btn btn-primary"
+      class="btn colorButtonviolet btn-lg btn-block"
     >
-      Submit
+      Sauvgarder
     </button>
+
+    <button (click)= "resetForm(loginForm)"  class="btn colorButtonyellow btn-lg btn-block">Annuler</button>
   </form>
 </div>
 
 
+
+
+<app-description-metier></app-description-metier>

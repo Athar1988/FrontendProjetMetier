@@ -17,7 +17,10 @@ import { CommentaireComponent } from './utilisateur/commentaire/commentaire.comp
 import { UserRecentComponent } from './utilisateur/user-recent/user-recent.component';
 import {InscriptionComponent} from './utilisateur/inscription/inscription.component';
 import { ModifierProfilComponent } from './utilisateur/modifier-profil/modifier-profil.component';
-
+import { DescriptionMetierComponent } from './menu/description-metier/description-metier.component';
+import { LoginComponent } from './connexion/login/login.component';
+import { ChercherArtisanComponent } from './metier/chercher-artisan/chercher-artisan.component';
+import { ProfilComponent } from './utilisateur/profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,11 @@ import { ModifierProfilComponent } from './utilisateur/modifier-profil/modifier-
     CommentaireComponent,
     UserRecentComponent,
     InscriptionComponent,
-    ModifierProfilComponent
+    ModifierProfilComponent,
+    DescriptionMetierComponent,
+    LoginComponent,
+    ChercherArtisanComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,

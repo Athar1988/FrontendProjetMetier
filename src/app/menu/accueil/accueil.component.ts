@@ -8,12 +8,10 @@ import {Router} from '@angular/router';
 })
 export class AccueilComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  inscription() {
-    this.router.navigate(['/inscription']);
-  }
+
 }

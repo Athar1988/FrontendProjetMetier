@@ -2,4 +2,8 @@
 @import "~bootstrap";
 @import "~font-awesome";
 @import '~material-icons/iconfont/material-icons.css';
-
+@import "assets/css/toaster.css";
+@import "assets/css/styles.css";
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/saga-blue/theme.css";
+@import "~primeng/resources/primeng.min.css";

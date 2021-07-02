@@ -5,3 +5,15 @@
 .ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
 }
+
+
+.colorButtonyellow{
+  background-color: #d4d202;
+  color: #000;
+}
+
+
+.colorButtonviolet{
+  background-color: #cd87d4;
+  color: #000;
+}

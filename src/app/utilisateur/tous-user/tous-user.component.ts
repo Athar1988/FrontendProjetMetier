@@ -19,7 +19,7 @@ export class TousUserComponent implements OnInit {
   }
 
   private getTousUser(){
-    this.serviceUser.getTousUser("/utilisateurs")
+    this.serviceUser.getTousUser("")
       .subscribe(
         data=>{this.utilisateurs=data, console.log(this.utilisateurs)},
         err=> {console.log(err);}

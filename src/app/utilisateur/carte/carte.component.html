@@ -1,71 +1,28 @@
-<!--
-<div class="col-md-3">
-  <div class="card" style="width:200px">
-    <img class="card-img-top"
-         src="/assets/metier/{{user.photo}}"
-         alt="Card image"
-         [ngStyle]="{
-      heigth: heigth + 'px',
-      width: width + 'px'
-    }"
-         [ngClass]="{
-      'rounded-circle': isRounded
-    }">
-    <div class="card-body">
-      <h4 class="card-title">{{user.nom}}</h4>
-      <p class="card-text">Some example text.</p>
-      <a href="#" class="btn btn-primary">See Profile</a>
+
+<div class="container mt-2 d-flex justify-content-center">
+  <div class="card p-2 mt-2">
+    <div class="first">
+      <h6 class="heading">{{user.nom}} {{user.prenom}}</h6>
+      <div class="time d-flex flex-row align-items-center justify-content-between mt-3">
+      </div>
+    </div>
+    <div class="second d-flex flex-row mt-2">
+      <div class="image mr-3"> <img src="/assets/metier/{{user.photo}}" class="rounded-circle" width="60" height="60"/> </div>
+      <div class="">
+        <div class="d-flex flex-row mb-1"> <span>{{user.metier}}</span>
+          <div class="ratings ml-2">
+            <i class="fa fa-star text-warning"></i>
+            <i class="fa fa-star text-warning"></i>
+            <i class="fa fa-star text-warning"></i>
+            <i class="fa fa-star text-warning"></i>
+            <i class="fa fa-star"></i> </div>
+        </div>
+        <div> <button class="btn btn-outline-dark btn-sm px-2">Abonner</button> <button class="btn btn-outline-dark btn-sm">Profil</button> <button class="btn btn-outline-dark btn-sm"><i class="fa fa-comment-o"></i></button> </div>
+      </div>
+    </div>
+    <hr class="line-color">
+    <h6>48 Commentaires</h6>
+    <div class="third mt-2"> <button class="btn btn-success btn-block" (click)="profilArtisan(user)"><i class="fa fa-clock-o"></i> Consulter Profil</button>
     </div>
   </div>
 </div>
-
-
-
-
-    <div class="card mb-4 shadow-sm">
-      <img class="card-img-top" data-src="/assets/metier/{{user.photo}}" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_179468cabdf%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_179468cabdf%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.71875%22%20y%3D%22120.3%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-      <div class="card-body">
-        <h5 class="card-title">{{user.nom}} {{user.prenom}}</h5>
-        <h6 class="card-title">{{user.metier}}</h6>
-        <h6 class="card-title">{{user.score}}</h6>
-        <p class="card-text">Fort d'une expérience de plus 18 ans, SPMI.VENTILATION réalise tous vos travaux de VMC et aspiration centralisée.
-          Travail et matériel de qualité avec  conseil avisé.</p>
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-          </div>
-          <small class="text-muted">9 mins</small>
-        </div>
-      </div>
-    </div>
-
-
--->
-
-
-
-
-
-
-
-
-
-      <!-- Card-->
-      <div class="card rounded shadow-sm border-0">
-        <div class="card-body p-4"><img src="/assets/metier/{{user.photo}}" alt="" class="img-fluid d-block mx-auto mb-3">
-          <h5> <a href="#" class="text-dark">{{user.nom}} {{user.prenom}}</a></h5>
-          <p class="small text-muted font-italic">Fort d'une expérience de plus 18 ans, SPMI.VENTILATION réalise tous vos travaux de VMC et aspiration centralisée.
-            Travail et matériel de qualité avec  conseil avisé.</p>
-          <ul class="list-inline small">
-            <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-            <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-            <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-            <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-            <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-            <li class="list-inline-item m-0"><a>Consulter</a></li>
-
-          </ul>
-        </div>
-      </div>
-

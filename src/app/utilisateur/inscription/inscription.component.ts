@@ -3,6 +3,8 @@ import {TouslesutilisateurService} from '../../services/touslesutilisateur.servi
 import {Utilisateur} from '../../Model/utilisateur';
 import { ToastrService } from 'ngx-toastr';
 import {Router} from '@angular/router';
+import {LoginServiceService} from '../../services/login-service.service';
+import {Login} from '../../Model/login';
 
 @Component({
   selector: 'app-inscription',
@@ -12,6 +14,7 @@ import {Router} from '@angular/router';
 
 
 export class InscriptionComponent implements OnInit {
+  //champs du formulaire
   description='';
   nom='';
   prenom='';
@@ -21,37 +24,46 @@ export class InscriptionComponent implements OnInit {
   adresse='';
   telephone='';
   metier='';
-  user: Utilisateur;
-  listEmail: any;
-  emailInitial="";
+  //variable pour tester existance du email
 
-  public trouve=false;
+  listEmail: any;
+  //objet login
+  login:Login;
+
   constructor(
-    private serviceUser:TouslesutilisateurService,
+    public serviceUser:TouslesutilisateurService,
     private toaster: ToastrService,
-    private router: Router) { }
+    private router: Router,
+    private serviceLogin:LoginServiceService
+    ) { }
 
   ngOnInit(): void {
   }
 
+
+  //Verifier si l'adresse mail existe déjà il faut etre unique
   verifierEmail(value: any) {
-    this.serviceUser.recupereLesEmail().subscribe(
-      (data)=>{
-        this.listEmail=data;
-        for(let i of this.listEmail._embedded.utilisateurs){
-          if(i==value){
-this.email=" ";          }
-        }
-      }
-    )
+        this.serviceUser.verifierEmailService(value);
+        this.serviceUser.mailexiste=false;
   }
 
+
+
+
+  //sauvgarder l'utilisateur et login dans BD
   ajoutUser(utilisateur: Utilisateur): void {
     utilisateur.photo="avartar.jpg";
+    //ssauvgarde Login
+    this.login=new Login(utilisateur.email,utilisateur.motdepasse,false,true);
+    this.serviceLogin.addLogin(this.login).subscribe(
+      (newLogin)=> {console.log(this.login)},
+      (error)=>{        console.log(error);}
+    )
+    // sauvgarde utilisateur
     this.serviceUser.addUser(utilisateur).subscribe(
       (newUser) => {
-        this.toaster.success(`Le cv de ${utilisateur.nom} ${utilisateur.prenom} a été ajuoté avec succès`);
-        this.router.navigate(['']);
+        this.toaster.success(`Le cv de {utilisateur.nom} {utilisateur.prenom} a été ajuoté avec succès`);
+        this.router.navigate(['login']);
       },
       (erreur) => {
         console.log(erreur);
@@ -61,5 +73,7 @@ this.email=" ";          }
   }
 
 
-
+  resetForm(form){
+    form.resetForm();
+  }
 }

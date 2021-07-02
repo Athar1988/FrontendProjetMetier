@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbarr',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarrComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  inscriptionArtisan() {
+    this.router.navigate(['/inscription']);
+  }
+
+  connexion() {
+    this.router.navigate(['login']);
+  }
+
+  listeArtisan() {
+    this.router.navigate(['listeArtisan']);
+  }
+
+  inscriptionClient() {
+
   }
 
 }
