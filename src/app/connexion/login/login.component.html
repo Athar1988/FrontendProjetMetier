@@ -1,0 +1,82 @@
+
+<div class="col-md col-sm">
+  <app-navbarr></app-navbarr>
+
+  <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  </head>
+
+
+  <div id="logreg-forms">
+    <form class="form-signin" #loginForm="ngForm">
+      <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">S'identifier</h1>
+      <div class="social-login">
+        <button class="btn facebook-btn social-btn" type="button" (click)="identifierFacebook()"><span><i class="fab fa-facebook-f"></i> s'identifier avec Facebook</span> </button>
+        <button class="btn google-btn social-btn" type="button" (click)="identifieGoogle()"><span><i class="fab fa-google-plus-g"></i> s'identifier avec Google+</span> </button>
+      </div>
+      <p style="text-align:center"> OU  </p>
+
+      <input
+        type="email"
+        #emailInput="ngModel"
+        required
+        email
+        ngModel
+        name="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Saisir votre Email"
+        autofocus=""
+      />
+      <div
+        *ngIf="emailInput.invalid && emailInput.dirty"
+        class="alert alert-danger"
+      >
+        L'email est obliogatoire et doit être correct
+      </div>
+
+      <input
+        type="password"
+        required
+        minlength="4"
+        class="form-control"
+        ngModel
+        #pwdInput="ngModel"
+        name="motdepasse"
+        id="exampleInputPassword1"
+        placeholder="Saisir votre Mot de passe"
+      />
+      <div *ngIf="pwdInput.invalid && pwdInput.dirty" class="alert alert-danger">
+        Le password est obligatoire et doit impérativement avoir au moins 4
+        caractères
+      </div>
+
+
+
+      <button class="btn btn-success btn-block"
+              type="submit"
+              (click)="login(loginForm.value)"
+              [disabled]="loginForm.invalid"
+      ><i class="fas fa-sign-in-alt"></i> Connection</button>
+<br>
+      <div
+
+        *ngIf="serviceLogin.mailexiste==false"
+        class="alert alert-danger"
+      >
+        L'utilisateur n'existe pas. Ajouter un nouveau compte
+      </div>
+
+      <a href="#" id="forgot_pswd">Mot de passe oublier?</a>
+      <hr>
+      <!-- <p>Don't have an account!</p>  -->
+      <button class="btn btn-primary btn-block" type="button" id="btn-signup" (click)="ajouterCompte()"><i class="fas fa-user-plus"></i> Ajouter un nouveau compte</button>
+
+    </form>
+
+
+  </div>
+</div>
+
+
